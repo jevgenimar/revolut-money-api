@@ -2,11 +2,14 @@
 build/*
 
 # Gradle files
-gradle/*
 .gradle/*
-.idea/*
+
 
 # Idea files
+.idea/*
 *.iml
 *.ipr
 *.iws
+
+# jar files
+*.jar
