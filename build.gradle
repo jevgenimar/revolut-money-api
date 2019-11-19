@@ -1,0 +1,48 @@
+plugins {
+    id "java"
+    id "application"
+    id "idea"
+}
+
+ext {
+    javaMainClass = "eu.money.MoneyTransfer"
+    sparkVersion = "2.9.1"
+    sql2oVersion = "1.6.0"
+    hsqldbVersion = "2.5.0"
+    gsonVersion = "2.8.6"
+    slf4jVersion = "1.7.29"
+    commonsLangVersion = "3.9"
+
+    // test dependencies
+    junitVersion = "4.12"
+    restAssuredVersion = "2.8.0"
+    mockitoVersion = "3.1.0"
+}
+application {
+    mainClassName = javaMainClass
+}
+
+apply from: "$rootDir/api-test.gradle"
+
+group "eu.money"
+version "1.0-SNAPSHOT"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.sparkjava:spark-core:${sparkVersion}"
+    compile "org.sql2o:sql2o:${sql2oVersion}"
+    compile "org.hsqldb:hsqldb:${hsqldbVersion}"
+    compile "com.google.code.gson:gson:${gsonVersion}"
+    compile "org.slf4j:slf4j-simple:${slf4jVersion}"
+    compile "org.apache.commons:commons-lang3:${commonsLangVersion}"
+
+    testCompile "junit:junit:${junitVersion}"
+    testCompile "com.jayway.restassured:rest-assured:${restAssuredVersion}"
+    testCompile "org.mockito:mockito-core:${mockitoVersion}"
+}

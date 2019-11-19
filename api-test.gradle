@@ -1,0 +1,25 @@
+sourceSets {
+    apiTest {
+        compileClasspath += sourceSets.main.output + configurations.testCompile
+        runtimeClasspath += output + compileClasspath + configurations.testRuntime
+    }
+}
+
+idea {
+    module {
+        testSourceDirs += sourceSets.apiTest.java.srcDirs
+        testResourceDirs += sourceSets.apiTest.resources.srcDirs
+        scopes.TEST.plus += [ configurations.apiTestCompile ]
+    }
+}
+
+task apiTest(type: Test) {
+    description = 'Runs the API tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.apiTest.output.classesDirs
+    classpath = sourceSets.apiTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+    mustRunAfter test
+}
+
+check.dependsOn apiTest

@@ -1,0 +1,10 @@
+package eu.money.constant;
+
+public enum ErrorCode {
+    ACCOUNT_ALREADY_LOCKED,
+    NON_UNIQUE_RESULT,
+    NOT_ENOUGH_BALANCE,
+    RESOURCE_NOT_FOUND,
+    REQUEST_VALIDATION_FAILED,
+    INTERNAL_SERVER_ERROR
+}
