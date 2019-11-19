@@ -11,5 +11,3 @@ build/*
 *.ipr
 *.iws
 
-# jar files
-*.jar
